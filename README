@@ -1,0 +1,42 @@
+//Start broker
+docker-compose up -d broker
+docker exec broker rabbitmq-plugins enable rabbitmq_management
+docker exec broker rabbitmq-plugins enable rabbitmq_consistent_hash_exchange
+//https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange
+//configure the rabbitmq by ip in the application properties of policyengine
+//Access to http://localhost:15672 with username/password guest/guest
+
+//start nexus container
+docker-compose up -d my-nexus //like this there is a connectivity problem between policy manager container and nexus
+docker run -d -p 8081:8081 -p 8082:8082 -p 8083:8083 --name my-nexus sonatype/nexus3:3.0.0
+//create maven-group with central-releases-snapshots
+//deploy kjars to ubi-nexus
+http://codeheaven.io/using-nexus-3-as-your-repository-part-1-maven-artifacts/
+//see nexus at http://localhost:8081
+https://dzone.com/articles/using-github-as-maven-repository
+
+
+// create image for policyengine
+docker  build -t consistentpolicyengine .
+
+//Go to /home/eleni/NetBeansProjects/traefik/examples/quickstart/
+//before stop apache because traefik uses the port 80
+sudo service apache2 stop
+docker-compose up -d reverse-proxy 
+//access traefik at http://localhost:8080/dashboard/
+
+docker images
+To remove all images which are not used by existing containers, use the -a flag:
+docker image prune -a
+
+
+docker-compose up -d consistentpolicyengine
+docker-compose up -d --scale consistentpolicyengine=2 
+docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}"))
+
+references
+https://arxiv.org/pdf/1406.2294.pdf
+https://stattrek.com/chi-square-test/independence.aspx
+https://www.uuidgenerator.net/
+https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange
+https://www.haproxy.com/blog/haproxys-load-balancing-algorithm-for-static-content-delivery-with-varnish/
