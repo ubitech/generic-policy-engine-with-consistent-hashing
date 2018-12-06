@@ -1,4 +1,4 @@
-![Alt text](/blob/master/images/hashring.jpg?raw=true "Title")
+![Alt text](https://github.com/ubitech/generic-policy-engine-with-consistent-hashing/blob/master/images/hashring.jpg)
 
 Current project includes a Proof of concept for a generic scalable policy engine.
 Policy engine is based on drools with rule kjars discovery in a remote maven repository. 
