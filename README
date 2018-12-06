@@ -1,4 +1,4 @@
-![Alt text](images/hashring.jpg)
+![HashingRing](/images/hashring.jpg)
 
 Current project includes a Proof of concept for a generic scalable policy engine.
 Policy engine is based on drools with rule kjars discovery in a remote maven repository. 
