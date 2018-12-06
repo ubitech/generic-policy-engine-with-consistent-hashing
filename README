@@ -1,5 +1,3 @@
-![HashingRing](/images/hashring.jpg)
-
 Current project includes a Proof of concept for a generic scalable policy engine.
 Policy engine is based on drools with rule kjars discovery in a remote maven repository. 
 Messages are delivered at the policy engine workers based on consistent hashing technique.
@@ -50,3 +48,4 @@ Userfull References:
 https://arxiv.org/pdf/1406.2294.pdf
 https://stattrek.com/chi-square-test/independence.aspx
 https://www.uuidgenerator.net/
+![HashingRing](/images/hashring.jpg)
