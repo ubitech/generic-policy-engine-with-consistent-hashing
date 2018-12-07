@@ -1,3 +1,5 @@
+#### Overview  
+
 Current project includes a Proof of concept for a generic scalable policy engine.
 Policy engine is based on drools with rule kjars discovery in a remote maven repository. 
 Messages are delivered at the policy engine workers based on consistent hashing technique.
@@ -36,32 +38,31 @@ java -jar target/consistent-hash-exchange-policy-engine-0.0.1-SNAPSHOT.jar
 ```
 
 #### Containerized mode:
-In containerized  mode there is an extra prerequisites. This consist in enabling a load balancer in front of the workers. Traefik load balancer is selected for that.  
-Start Traefik load balancer
+In containerized  mode there is an extra prerequisites. This consist in enabling a load balancer in front of the workers. Traefik load balancer is selected for that. You can access traefik at http://localhost:8080/dashboard/    
+
+##### Start Traefik load balancer
 ```
 sudo service apache2 stop //Stop apache because traefik uses the port 80
 docker-compose up -d reverse-proxy 
 ```
-You can access traefik at http://localhost:8080/dashboard/
 
-Create policyengine container(s)
+##### Create policyengine container(s)
 ```
 docker  build -t consistentpolicyengine . // build policy engine image
 docker-compose up -d consistentpolicyengine // Create only one worker
 docker-compose up -d --scale consistentpolicyengine=2  //Create a cluster of policy engine containers
 ```
 
-Some usefull commmands for testing are:  
-```docker images```  
-To remove all images which are not used by existing containers, use the -a flag:  
-```docker image prune -a```  
-Kill all policy engine workers:  
-```docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}"))```  
+##### Some usefull commmands for testing are:  
+```docker images //fetch all docker images  
+docker image prune -a // remove all images which are not used by existing containers  
+docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}")) // kill all policy engine workers
+```  
 
 #### References:
 https://arxiv.org/pdf/1406.2294.pdf  
 https://stattrek.com/chi-square-test/independence.aspx  
 https://www.uuidgenerator.net/  
 
-Useful and brief explication of how consistent hash function works  
+##### Useful and brief explication of how consistent hash function works  
 ![HashingRing](/images/hashring.jpg)
