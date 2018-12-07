@@ -36,24 +36,19 @@ java -jar target/consistent-hash-exchange-policy-engine-0.0.1-SNAPSHOT.jar
 ```
 
 #### Containerized mode:
-Extra prerequisites:
-3. Traefik load balancer 
-Stop apache because traefik uses the port 80 : 
+In containerized  mode there is an extra prerequisites. This consist in enabling a load balancer in front of the workers. Traefik load balancer is selected for that.  
+Start Traefik load balancer
 ```
-sudo service apache2 stop
+sudo service apache2 stop //Stop apache because traefik uses the port 80
 docker-compose up -d reverse-proxy 
 ```
 You can access traefik at http://localhost:8080/dashboard/
 
-Create image for policyengine
+Create policyengine container(s)
 ```
-docker  build -t consistentpolicyengine .
-```
-Create only one worker:
-```
-docker-compose up -d consistentpolicyengine
-Create a cluster of policy engine containers:
-docker-compose up -d --scale consistentpolicyengine=2 
+docker  build -t consistentpolicyengine . // build policy engine image
+docker-compose up -d consistentpolicyengine // Create only one worker
+docker-compose up -d --scale consistentpolicyengine=2  //Create a cluster of policy engine containers
 ```
 
 Some usefull commmands for testing are:  
