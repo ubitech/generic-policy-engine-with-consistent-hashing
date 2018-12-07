@@ -4,11 +4,11 @@ Messages are delivered at the policy engine workers based on consistent hashing 
 
 #### Policy engine Arquitecture:
 
-![policyArchitecture](/images/policyArchitecture.jpg)
+![policyArchitecture](/images/policyArchitecture.png)
 
 Current solution supports consistent hashing delivery of messages at policy manager workers:  
 
-![consistenhashingpolicymanager](/images/consistenhashingpolicymanager.jpg)
+![consistenhashingpolicymanager](/images/consistenhashingpolicymanager.png)
 
 #### Prerequisites:
 1. Rabbitmq pub/sub framework with the https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange enabled.  
@@ -56,12 +56,12 @@ Create a cluster of policy engine containers:
 docker-compose up -d --scale consistentpolicyengine=2 
 ```
 
-Some usefull commmands for testing are:
-```docker images```
-To remove all images which are not used by existing containers, use the -a flag:
-```docker image prune -a```
-Kill all policy engine workers:
-```docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}"))```
+Some usefull commmands for testing are:  
+```docker images```  
+To remove all images which are not used by existing containers, use the -a flag:  
+```docker image prune -a```  
+Kill all policy engine workers:  
+```docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}"))```  
 
 #### References:
 https://arxiv.org/pdf/1406.2294.pdf  
