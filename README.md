@@ -63,6 +63,7 @@ docker-compose up -d --scale consistentpolicyengine=2  //Create a cluster of pol
 docker image prune -a // remove all images which are not used by existing containers  
 docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}")) // kill all policy engine workers
 docker logs consistent-hash-exchange-policy-engine_consistentpolicyengine_1 --follow //read logs from a worker
+docker exec -it  consistent-hash-exchange-policy-engine_consistentpolicyengine_1  bash // get inside the container
 ```  
 
 #### References:
