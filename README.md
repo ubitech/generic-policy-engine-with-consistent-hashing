@@ -6,7 +6,7 @@ Messages are delivered at the policy engine workers based on consistent hashing 
 
 ![policyArchitecture](/images/policyArchitecture.jpg)
 
-Current solution supports consistent hashing delivery of messages at policy manager workers:
+Current solution supports consistent hashing delivery of messages at policy manager workers:  
 
 ![consistenhashingpolicymanager](/images/consistenhashingpolicymanager.jpg)
 
@@ -68,5 +68,5 @@ https://arxiv.org/pdf/1406.2294.pdf
 https://stattrek.com/chi-square-test/independence.aspx
 https://www.uuidgenerator.net/
 
-Useful and brief explication of how consistent hash function works
+Useful and brief explication of how consistent hash function works  
 ![HashingRing](/images/hashring.jpg)
