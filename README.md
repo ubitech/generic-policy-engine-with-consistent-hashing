@@ -30,6 +30,11 @@ You should create a new repository named  maven-group that includes the followin
 Extra information can be found http://codeheaven.io/using-nexus-3-as-your-repository-part-1-maven-artifacts/  
 You can access Nexus repository at http://localhost:8081  
 
+You should update the ip of the remote nexus maven repository at the following files:  
+```
+settings.xml
+/src/main/resources/application.properties
+```
 
 #### Local mode execution it in standalone mode:
 ```
@@ -57,6 +62,7 @@ docker-compose up -d --scale consistentpolicyengine=2  //Create a cluster of pol
 ```docker images //fetch all docker images  
 docker image prune -a // remove all images which are not used by existing containers  
 docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}")) // kill all policy engine workers
+docker logs consistent-hash-exchange-policy-engine_consistentpolicyengine_1 --follow //read logs from a worker
 ```  
 
 #### References:
