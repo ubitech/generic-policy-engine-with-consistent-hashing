@@ -24,9 +24,9 @@ docker exec broker rabbitmq-plugins enable rabbitmq_consistent_hash_exchange
 docker-compose up -d my-nexus //like this there is a connectivity problem between policy manager container and nexus
 docker run -d -p 8081:8081 -p 8082:8082 -p 8083:8083 --name my-nexus sonatype/nexus3:3.0.0
 ```
-create maven-group repository including sub repositories  with central-releases-snapshots
-Extra information can be found http://codeheaven.io/using-nexus-3-as-your-repository-part-1-maven-artifacts/
-You can access Nexus repository at http://localhost:8081
+You should create a new repository named  maven-group that includes the following sub repositories: central, releases & snapshots.  
+Extra information can be found http://codeheaven.io/using-nexus-3-as-your-repository-part-1-maven-artifacts/  
+You can access Nexus repository at http://localhost:8081  
 
 
 #### Local mode execution it in standalone mode:
@@ -45,7 +45,7 @@ docker-compose up -d reverse-proxy
 ```
 You can access traefik at http://localhost:8080/dashboard/
 
-// create image for policyengine
+Create image for policyengine
 ```
 docker  build -t consistentpolicyengine .
 ```
@@ -56,7 +56,7 @@ Create a cluster of policy engine containers:
 docker-compose up -d --scale consistentpolicyengine=2 
 ```
 
-usefull commmands for testing:
+Some usefull commmands for testing are:
 ```docker images```
 To remove all images which are not used by existing containers, use the -a flag:
 ```docker image prune -a```
@@ -64,9 +64,9 @@ Kill all policy engine workers:
 ```docker rm $(docker stop $(docker ps -a -q --filter ancestor=consistentpolicyengine --format="{{.ID}}"))```
 
 #### References:
-https://arxiv.org/pdf/1406.2294.pdf
-https://stattrek.com/chi-square-test/independence.aspx
-https://www.uuidgenerator.net/
+https://arxiv.org/pdf/1406.2294.pdf  
+https://stattrek.com/chi-square-test/independence.aspx  
+https://www.uuidgenerator.net/  
 
 Useful and brief explication of how consistent hash function works  
 ![HashingRing](/images/hashring.jpg)
