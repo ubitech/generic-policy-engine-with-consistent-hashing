@@ -72,3 +72,14 @@ https://www.uuidgenerator.net/
 
 ##### Useful and brief explication of how consistent hash function works  
 ![HashingRing](/images/hashring.jpg)
+
+#### License
+
+This component is published under Apache 2.0 license. Please see the LICENSE file for more details.
+
+#### Lead Developers
+
+The following lead developers are responsible for this repository and have admin rights. They can, for example, merge pull requests.
+
+- Eleni Fotopoulou ([@elfo](https://github.com/efotopoulou))
+- Anastasios Zafeiropoulos ([@tzafeir ](https://github.com/azafeiropoulos))
