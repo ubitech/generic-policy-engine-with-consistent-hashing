@@ -6,8 +6,7 @@ Messages are delivered at the policy engine workers based on consistent hashing 
 
 #### Policy engine Arquitecture:
 
-![policyArchitecture](/images/policyArchitecture.png | width=50)
-<img src="/images/policyArchitecture.png" width="48">
+<img src="/images/policyArchitecture.png" width="200">
 
 Current solution supports consistent hashing delivery of messages at policy manager workers:  
 
