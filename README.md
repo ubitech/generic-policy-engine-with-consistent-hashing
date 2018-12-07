@@ -31,10 +31,10 @@ Extra information can be found http://codeheaven.io/using-nexus-3-as-your-reposi
 You can access Nexus repository at http://localhost:8081  
 
 You should update the ip of the remote nexus maven repository at the following files:  
-```
-settings.xml
-/src/main/resources/application.properties
-```
+
+* settings.xml
+* /src/main/resources/application.properties
+
 
 #### Local mode execution it in standalone mode:
 ```
