@@ -6,11 +6,11 @@ Messages are delivered at the policy engine workers based on consistent hashing 
 
 #### Policy engine Arquitecture:
 
-<img src="/images/policyArchitecture.png" width="200">
+<img src="/images/policyArchitecture.png" width="500">
 
 Current solution supports consistent hashing delivery of messages at policy manager workers:  
 
-![consistenhashingpolicymanager](/images/consistenhashingpolicymanager.png)
+<img src="/images/consistenhashingpolicymanager.png" width="500">
 
 #### Prerequisites:
 1. Rabbitmq pub/sub framework with the https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange enabled.  
